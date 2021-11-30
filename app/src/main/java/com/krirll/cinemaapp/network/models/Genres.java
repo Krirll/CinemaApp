@@ -3,9 +3,9 @@ package com.krirll.cinemaapp.network.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Image {
+public class Genres {
 
-    @SerializedName("image")
+    @SerializedName("name")
     @Expose
-    public String imageUrl;
+    public String name;
 }
