@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.krirll.cinemaapp.R;
 import com.krirll.cinemaapp.network.models.Movie;
+import com.krirll.cinemaapp.ui.contracts.MoviesListener;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
@@ -21,6 +22,15 @@ import java.util.List;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> implements Serializable {
 
     private List<Movie> list = new ArrayList<>();
+    private MoviesListener listener;
+
+    public void setListener(MoviesListener listener) {
+        this.listener = listener;
+    }
+
+    public List<Movie> getList() {
+        return list;
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     public void setList(List<Movie> newList) {
@@ -56,8 +66,22 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
                 .centerCrop()
                 .into(holder.poster);
         holder.title.setText(list.get(position).title);
-        if (holder.description != null)
-            holder.description.setText(list.get(position).description);
+        if (holder.description != null) { //если телефон расположен горизонтально, то добавляется описание
+            //если описание слишком большое, то оно будет сокращено до 300 символов с добавлением "..."
+            if (list.get(position).description.length() > 300) {
+                String shortDescription = list.get(position).description;
+                while (shortDescription.length() > 300)
+                    shortDescription = shortDescription.substring(
+                            0,
+                            shortDescription.lastIndexOf(' ')
+                    );
+                shortDescription = shortDescription.concat("...");
+                holder.description.setText(shortDescription);
+            }
+            else
+                holder.description.setText(list.get(position).description);
+        }
+        holder.itemView.setOnClickListener(view -> listener.onClick(list.get(position)));
     }
 
     @Override

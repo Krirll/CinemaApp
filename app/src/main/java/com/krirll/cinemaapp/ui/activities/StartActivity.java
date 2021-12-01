@@ -17,8 +17,12 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         HandlerCompat.postDelayed(
                 new Handler(),
-                () -> startActivity(new Intent(StartActivity.this, MoviesActivity.class)),
+                () -> {
+                    startActivity(new Intent(StartActivity.this, MoviesActivity.class));
+                    finish();
+                    },
                 null,
-                1500);
+                1500
+        );
     }
 }

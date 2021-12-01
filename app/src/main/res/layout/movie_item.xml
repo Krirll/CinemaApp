@@ -25,7 +25,9 @@
     <TextView
         android:layout_marginTop="10dp"
         android:id="@+id/title"
-        android:textSize="18sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/kornilow"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:layout_margin="10dp"

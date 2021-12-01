@@ -29,7 +29,6 @@
 
             <include layout="@layout/movie_item"/>
             <include layout="@layout/movie_item"/>
-            <include layout="@layout/movie_item"/>
 
         </LinearLayout>
 

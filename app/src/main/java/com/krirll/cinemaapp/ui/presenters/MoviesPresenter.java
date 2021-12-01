@@ -2,11 +2,13 @@ package com.krirll.cinemaapp.ui.presenters;
 
 import androidx.annotation.NonNull;
 
+import com.krirll.cinemaapp.common.Messages;
 import com.krirll.cinemaapp.common.TimeConverter;
 import com.krirll.cinemaapp.network.models.MovieModel;
 import com.krirll.cinemaapp.network.retrofit.RetrofitClient;
 import com.krirll.cinemaapp.network.retrofit.RetrofitService;
 import com.krirll.cinemaapp.ui.contracts.MoviesContract;
+import com.krirll.cinemaapp.ui.contracts.MoviesListener;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,6 +20,7 @@ public class MoviesPresenter {
 
     private static MoviesContract moviesContract;
     private final RetrofitService service;
+    private final MoviesListener listener;
 
     public static MoviesPresenter getInstance(MoviesContract view) {
         if (moviesPresenter == null)
@@ -30,6 +33,7 @@ public class MoviesPresenter {
     public MoviesPresenter(MoviesContract view) {
         moviesContract = view;
         service = new RetrofitService(new RetrofitClient());
+        listener = movie -> moviesContract.startActivity(movie);
     }
 
     public void getMoviesSchedule() {
@@ -42,13 +46,17 @@ public class MoviesPresenter {
                             moviesContract.onSuccess(response.body().movies);
                         }
                         else
-                            moviesContract.onError("Произошла ошибка, попробуйте чуть позже");
+                            moviesContract.onError(Messages.INTERNET_CONNECTION_ERROR);
                     }
 
                     @Override
                     public void onFailure(@NonNull Call<MovieModel> call, @NonNull Throwable t) {
-                        moviesContract.onError("Отсутствует интернет-соединение");
+                        moviesContract.onError(Messages.SERVER_ERROR);
                     }
                 });
+    }
+
+    public MoviesListener getListener() {
+        return listener;
     }
 }
