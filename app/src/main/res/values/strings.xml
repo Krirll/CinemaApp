@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">CinemaApp</string>
-    <string name="internet_error">Произошла ошибка, попробуйте чуть позже</string>
-    <string name="server_error">Отсутствует интернет-соединение</string>
-    <string name="description">Описание:</string>
-    <string name="genres">Жанр:</string>
-    <string name="country">Страна:</string>
-    <string name="main_role">В главных ролях:</string>
-    <string name="director">Режиссер:</string>
-    <string name="writer">Сценарист:</string>
-    <string name="age_restriction">Возрастные ограничения:</string>
+    <string name="internet_error">Отсутствует интернет-соединение</string>
+    <string name="server_error">Произошла ошибка, попробуйте чуть позже</string>
+    <string name="description">Описание</string>
+    <string name="genres">Жанр</string>
+    <string name="country">Страна</string>
+    <string name="main_role">В главных ролях</string>
+    <string name="director">Режиссер</string>
+    <string name="age_restriction">Возрастные ограничения</string>
+    <string name="watch">Посмотреть сеансы</string>
+    <string name="no_stars">Информация отсутствует</string>
+    <string name="price">Цена: %s</string>
+    <string name="session">Ближайший сеанс: %s</string>
+    <string name="no_info">нет информации</string>
 </resources>

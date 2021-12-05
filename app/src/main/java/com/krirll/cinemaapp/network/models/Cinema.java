@@ -9,31 +9,16 @@ import java.util.List;
 
 public class Cinema implements Serializable {
 
-    @SerializedName("title")
+    @SerializedName("place")
     @Expose
-    public String title;
-
-    @SerializedName("address")
-    @Expose
-    public String address;
-
-    @SerializedName("phone")
-    @Expose
-    public String phone;
-
-    @SerializedName("subway")
-    @Expose
-    public String subway;
-
-    @SerializedName("images")
-    @Expose
-    public List<Image> listImages;
+    public Place place;
 
     @SerializedName("datetime")
     @Expose
-    public Timestamp dateTime;
+    public Long dateTime;
 
     @SerializedName("price")
     @Expose
     public String price;
 }
+

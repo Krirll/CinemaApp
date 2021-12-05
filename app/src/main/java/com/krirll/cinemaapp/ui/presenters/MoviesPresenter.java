@@ -30,7 +30,7 @@ public class MoviesPresenter {
         return moviesPresenter;
     }
 
-    public MoviesPresenter(MoviesContract view) {
+    private MoviesPresenter(MoviesContract view) {
         moviesContract = view;
         service = new RetrofitService(new RetrofitClient());
         listener = movie -> moviesContract.startActivity(movie);

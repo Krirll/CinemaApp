@@ -9,6 +9,6 @@ public class CinemaModel {
 
     @SerializedName("results")
     @Expose
-    public List<Cinema> movies;
+    public List<Cinema> cinemas;
 }
 

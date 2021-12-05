@@ -40,10 +40,6 @@ public class Movie implements Serializable {
     @Expose
     public String director;
 
-    @SerializedName("writer")
-    @Expose
-    public String writer;
-
     @SerializedName("images")
     @Expose
     public List<Image> listImages;

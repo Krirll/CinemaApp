@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,11 +24,13 @@ import java.util.List;
 public class MoviesActivity extends AppCompatActivity implements MoviesContract {
 
     private MoviesAdapter adapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
+        swipeRefreshLayout = findViewById(R.id.refresh);
         if (savedInstanceState != null) {
             adapter = (MoviesAdapter) savedInstanceState.getSerializable("adapter");
             if (adapter.getList().size() > 0)
@@ -36,7 +39,11 @@ public class MoviesActivity extends AppCompatActivity implements MoviesContract 
         else {
             adapter = new MoviesAdapter();
         }
-        MoviesPresenter.getInstance(this).getMoviesSchedule();
+        if (swipeRefreshLayout.isRefreshing() || adapter.getList().size() == 0) {
+            MoviesPresenter.getInstance(this).getMoviesSchedule();
+        }
+        swipeRefreshLayout.setOnRefreshListener(
+                () -> MoviesPresenter.getInstance(this).getMoviesSchedule());
         initRecyclerView();
     }
 
@@ -57,9 +64,14 @@ public class MoviesActivity extends AppCompatActivity implements MoviesContract 
         shimmer.setVisibility(View.GONE);
     }
 
+    private void hideSwipe() {
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
     @Override
     public void onSuccess(List<Movie> listMovies) {
         hideShimmer();
+        hideSwipe();
         for (Movie item : listMovies) //очищаю все элементы от тегов <p></p>
             item.description = item.description.replaceAll("[<p/>]", "");
         adapter.setList(listMovies);
@@ -67,6 +79,7 @@ public class MoviesActivity extends AppCompatActivity implements MoviesContract 
 
     @Override
     public void onError(Messages errorMessage) {
+        hideSwipe();
         String message = "";
         //в зависимости от ошибки (enum), из ресурсов береться определенная строка
         switch(errorMessage) {
@@ -89,6 +102,11 @@ public class MoviesActivity extends AppCompatActivity implements MoviesContract 
                 )
                 .putExtra(MovieInfoActivity.MOVIE_INFO, movie)
         );
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
     @Override
