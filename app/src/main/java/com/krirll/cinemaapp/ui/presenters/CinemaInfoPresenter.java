@@ -1,5 +1,6 @@
 package com.krirll.cinemaapp.ui.presenters;
 
+import com.krirll.cinemaapp.network.models.Images;
 import com.krirll.cinemaapp.ui.contracts.CinemaInfoContract;
 
 public class CinemaInfoPresenter {
@@ -17,7 +18,7 @@ public class CinemaInfoPresenter {
         return cinemaInfoPresenter;
     }
 
-    public void show() {
-        cinemaInfoContract.startActivity();
+    public void show(Images list) {
+        cinemaInfoContract.startActivity(list);
     }
 }

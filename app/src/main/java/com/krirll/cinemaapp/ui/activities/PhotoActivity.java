@@ -4,27 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 import com.google.android.material.tabs.TabLayout;
 import com.krirll.cinemaapp.R;
 import com.krirll.cinemaapp.adapters.ImagesAdapter;
 import com.krirll.cinemaapp.network.models.Image;
+import com.krirll.cinemaapp.network.models.Images;
 
 import java.io.Serializable;
 import java.util.List;
-
-class Images implements Serializable {
-
-    private final List<Image> list;
-
-    public Images(List<Image> newList) {
-        list = newList;
-    }
-
-    public List<Image> getList() {
-        return list;
-    }
-}
 
 public class PhotoActivity extends AppCompatActivity {
 
@@ -35,6 +24,9 @@ public class PhotoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
         Images listImages = (Images) getIntent().getSerializableExtra(PHOTOS);
+
+        //todo toolbar
+        //Toolbar toolbar = findViewById(R.id.toolbar);
 
         ViewPager images = findViewById(R.id.viewPager);
         TabLayout tab = findViewById(R.id.tab);

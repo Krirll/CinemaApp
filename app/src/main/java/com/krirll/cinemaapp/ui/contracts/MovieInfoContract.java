@@ -1,6 +1,8 @@
 package com.krirll.cinemaapp.ui.contracts;
 
+import com.krirll.cinemaapp.network.models.Images;
+
 public interface MovieInfoContract extends ViewPagerClickListener {
     void openCinemas(int id);
-    void startActivity();
+    void startActivity(Images list);
 }

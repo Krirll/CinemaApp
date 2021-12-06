@@ -1,5 +1,6 @@
 package com.krirll.cinemaapp.ui.presenters;
 
+import com.krirll.cinemaapp.network.models.Images;
 import com.krirll.cinemaapp.ui.contracts.MovieInfoContract;
 
 public class MovieInfoPresenter {
@@ -21,8 +22,8 @@ public class MovieInfoPresenter {
         movieInfoContract.openCinemas(id);
     }
 
-    public void show() {
-        movieInfoContract.startActivity();
+    public void show(Images list) {
+        movieInfoContract.startActivity(list);
     }
 
 }

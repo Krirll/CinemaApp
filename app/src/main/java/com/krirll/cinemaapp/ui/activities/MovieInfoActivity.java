@@ -12,6 +12,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.krirll.cinemaapp.R;
 import com.krirll.cinemaapp.adapters.ImagesAdapter;
 import com.krirll.cinemaapp.network.models.Genres;
+import com.krirll.cinemaapp.network.models.Images;
 import com.krirll.cinemaapp.network.models.Movie;
 import com.krirll.cinemaapp.ui.contracts.MovieInfoContract;
 import com.krirll.cinemaapp.ui.presenters.MovieInfoPresenter;
@@ -80,11 +81,11 @@ public class MovieInfoActivity extends AppCompatActivity implements MovieInfoCon
 
     @Override
     public void showPhoto() {
-        MovieInfoPresenter.getInstance(this).show();
+        MovieInfoPresenter.getInstance(this).show(list);
     }
 
     @Override
-    public void startActivity() {
+    public void startActivity(Images list) {
         startActivity(
                 new Intent(
                         this, PhotoActivity.class

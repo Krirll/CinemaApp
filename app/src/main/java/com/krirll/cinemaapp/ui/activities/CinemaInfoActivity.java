@@ -11,6 +11,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.krirll.cinemaapp.R;
 import com.krirll.cinemaapp.adapters.ImagesAdapter;
 import com.krirll.cinemaapp.network.models.Cinema;
+import com.krirll.cinemaapp.network.models.Images;
 import com.krirll.cinemaapp.ui.contracts.CinemaInfoContract;
 import com.krirll.cinemaapp.ui.presenters.CinemaInfoPresenter;
 
@@ -22,11 +23,14 @@ public class CinemaInfoActivity extends AppCompatActivity implements CinemaInfoC
 
     public static final String CINEMA = "CINEMA";
 
+    private Images list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cinema_info);
         Cinema cinema = (Cinema) getIntent().getSerializableExtra(CINEMA);
+        list = new Images(cinema.place.listImages);
         CinemaInfoPresenter.getInstance(this);
 
         ViewPager images = findViewById(R.id.viewPager);
@@ -95,15 +99,15 @@ public class CinemaInfoActivity extends AppCompatActivity implements CinemaInfoC
 
     @Override
     public void showPhoto() {
-        CinemaInfoPresenter.getInstance(this).show();
+        CinemaInfoPresenter.getInstance(this).show(list);
     }
 
     @Override
-    public void startActivity() {
+    public void startActivity(Images list) {
         startActivity(
                 new Intent(
                         this, PhotoActivity.class
-                )//.putExtra()
+                ).putExtra(PhotoActivity.PHOTOS, list)
         );
     }
 }
