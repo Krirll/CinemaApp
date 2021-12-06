@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background_cinemas"
     tools:context=".ui.activities.MovieInfoActivity"
@@ -46,118 +46,50 @@
             android:fontFamily="@font/kornilow"/>
 
         <TextView
-            android:layout_margin="5dp"
-            android:text="@string/description"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/kornilow"
-            android:textColor="@color/black"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_margin="5dp"
+            android:id="@+id/session"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/kornilow"
             android:textColor="@color/black"
-            android:textSize="20sp"/>
+            android:textSize="24sp"/>
 
         <TextView
-            android:layout_margin="5dp"
-            android:text="@string/age_restriction"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/kornilow"
-            android:textColor="@color/black"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/age"
+            android:id="@+id/price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:fontFamily="@font/kornilow"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="22sp" />
+
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/kornilow"
-            android:text="@string/genres"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/genres"
+            android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:fontFamily="@font/kornilow"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
         <TextView
-            android:layout_margin="5dp"
-            android:text="@string/country"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/kornilow"
-            android:textColor="@color/black"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/country"
+            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:fontFamily="@font/kornilow"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
         <TextView
-            android:layout_margin="5dp"
-            android:text="@string/main_role"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/kornilow"
-            android:textColor="@color/black"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/stars"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/kornilow"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:layout_margin="5dp"
-            android:text="@string/director"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/kornilow"
-            android:textColor="@color/black"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/director"
+            android:id="@+id/subway"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_margin="5dp"
             android:fontFamily="@font/kornilow"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 

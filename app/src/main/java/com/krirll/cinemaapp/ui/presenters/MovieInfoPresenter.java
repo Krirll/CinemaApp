@@ -21,4 +21,8 @@ public class MovieInfoPresenter {
         movieInfoContract.openCinemas(id);
     }
 
+    public void show() {
+        movieInfoContract.startActivity();
+    }
+
 }

@@ -18,6 +18,6 @@ public class CinemaInfoPresenter {
     }
 
     public void show() {
-        cinemaInfoContract.showPhoto();
+        cinemaInfoContract.startActivity();
     }
 }

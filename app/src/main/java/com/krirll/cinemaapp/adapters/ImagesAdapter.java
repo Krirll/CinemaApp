@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.krirll.cinemaapp.R;
 import com.krirll.cinemaapp.network.models.Image;
+import com.krirll.cinemaapp.ui.contracts.ViewPagerClickListener;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -22,17 +23,24 @@ public class ImagesAdapter extends PagerAdapter {
 
     private final List<Image> list;
     private final Context context;
+    private final ViewPagerClickListener listener;
+    private final int layout;
 
-    public ImagesAdapter(List<Image> newList, Context newContext) {
+    public ImagesAdapter(List<Image> newList,
+                         Context newContext,
+                         ViewPagerClickListener newListener,
+                         int newLayout) {
         list = newList;
         context = newContext;
+        listener = newListener;
+        layout = newLayout;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.image_item, container, false);
+        View view = LayoutInflater.from(context).inflate(layout, container, false);
         ImageView imageView = view.findViewById(R.id.image);
         Picasso.get()
                 .load(Uri.parse(list.get(position).imageUrl))
@@ -46,6 +54,8 @@ public class ImagesAdapter extends PagerAdapter {
                     @Override
                     public void onError(Exception e) { }
                 });
+        if (listener != null)
+            imageView.setOnClickListener(view1 -> listener.showPhoto());
         ((ViewPager)container).addView(view, 0);
         return view;
     }

@@ -1,5 +1,5 @@
 package com.krirll.cinemaapp.ui.contracts;
 
-public interface CinemaInfoContract {
-    void showPhoto();
+public interface CinemaInfoContract extends ViewPagerClickListener {
+    void startActivity();
 }

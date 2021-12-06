@@ -21,9 +21,12 @@
         <entry key="..\:/Users/1/AndroidStudioProjects/CinemaApp/app/src/main/res/layout/activity_start.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/1/AndroidStudioProjects/CinemaApp/app/src/main/res/layout/cinema_image_item.xml" value="0.21981981981981982" />
         <entry key="..\:/Users/1/AndroidStudioProjects/CinemaApp/app/src/main/res/layout/cinema_item.xml" value="0.264" />
+        <entry key="..\:/Users/1/AndroidStudioProjects/CinemaApp/app/src/main/res/layout/image_item.xml" value="0.21981981981981982" />
         <entry key="..\:/Users/1/AndroidStudioProjects/CinemaApp/app/src/main/res/layout/movie_image_item.xml" value="0.21981981981981982" />
         <entry key="..\:/Users/1/AndroidStudioProjects/CinemaApp/app/src/main/res/layout/movie_item.xml" value="0.264" />
+        <entry key="..\:/Users/1/AndroidStudioProjects/CinemaApp/app/src/main/res/layout/photo_item.xml" value="0.21981981981981982" />
         <entry key="..\:/Users/1/AndroidStudioProjects/CinemaApp/app/src/main/res/layout/selected_dot.xml" value="0.21981981981981982" />
+        <entry key="..\:/Users/1/AndroidStudioProjects/CinemaApp/app/src/main/res/menu/photo_menu.xml" value="0.21981981981981982" />
       </map>
     </option>
   </component>

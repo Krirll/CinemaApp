@@ -20,6 +20,7 @@ import com.krirll.cinemaapp.ui.presenters.MovieInfoPresenter;
 public class MovieInfoActivity extends AppCompatActivity implements MovieInfoContract {
 
     public static final String MOVIE_INFO = "MOVIE_INFO";
+    private Images list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +28,18 @@ public class MovieInfoActivity extends AppCompatActivity implements MovieInfoCon
         setContentView(R.layout.activity_movie_info);
         MovieInfoPresenter presenter = MovieInfoPresenter.getInstance(this);
         Movie movie = (Movie) getIntent().getSerializableExtra(MOVIE_INFO);
+        list = new Images(movie.listImages);
 
         ViewPager images = findViewById(R.id.viewPager);
         TabLayout tab = findViewById(R.id.tab);
-        images.setAdapter(new ImagesAdapter(movie.listImages, this));
+        images.setAdapter(
+                new ImagesAdapter(
+                        movie.listImages,
+                        this,
+                        this,
+                        R.layout.image_item
+                )
+        );
         tab.setupWithViewPager(images, true);
 
         TextView title = findViewById(R.id.title);
@@ -66,6 +75,20 @@ public class MovieInfoActivity extends AppCompatActivity implements MovieInfoCon
         startActivity(
                 new Intent(this, CinemasActivity.class)
                         .putExtra(CinemasActivity.CINEMAS, id)
+        );
+    }
+
+    @Override
+    public void showPhoto() {
+        MovieInfoPresenter.getInstance(this).show();
+    }
+
+    @Override
+    public void startActivity() {
+        startActivity(
+                new Intent(
+                        this, PhotoActivity.class
+                ).putExtra(PhotoActivity.PHOTOS, list)
         );
     }
 
