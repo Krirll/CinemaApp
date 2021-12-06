@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    @GET("?location=msk&page_size=50&fields=id,title,poster,genres,publication_date,title,body_text,country,age_restriction,stars,director,writer,images")
+    @GET("?location=msk&page_size=50&fields=id,title,poster,genres,publication_date,title,body_text,country,age_restriction,stars,director,images")
     Call<MovieModel> getMovies(@Query("actual_since") String time);
 
     @GET("{id}/showings/?location=msk&expand=place&page_size=100&fields=place,datetime,price")

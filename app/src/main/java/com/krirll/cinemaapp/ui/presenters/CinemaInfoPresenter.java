@@ -1,4 +1,23 @@
 package com.krirll.cinemaapp.ui.presenters;
 
+import com.krirll.cinemaapp.ui.contracts.CinemaInfoContract;
+
 public class CinemaInfoPresenter {
+
+    private static CinemaInfoPresenter cinemaInfoPresenter;
+    private static CinemaInfoContract cinemaInfoContract;
+
+    public CinemaInfoPresenter(CinemaInfoContract view) {
+        cinemaInfoContract = view;
+    }
+
+    public static CinemaInfoPresenter getInstance(CinemaInfoContract view) {
+        if (cinemaInfoPresenter == null)
+            cinemaInfoPresenter = new CinemaInfoPresenter(view);
+        return cinemaInfoPresenter;
+    }
+
+    public void show() {
+        cinemaInfoContract.showPhoto();
+    }
 }

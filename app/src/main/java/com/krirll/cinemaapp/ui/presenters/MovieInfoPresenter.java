@@ -17,8 +17,8 @@ public class MovieInfoPresenter {
         movieInfoContract = view;
     }
 
-    public void onClick() {
-        movieInfoContract.openCinemas();
+    public void onClick(int id) {
+        movieInfoContract.openCinemas(id);
     }
 
 }

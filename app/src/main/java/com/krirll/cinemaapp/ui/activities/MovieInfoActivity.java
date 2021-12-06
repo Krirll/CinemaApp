@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.krirll.cinemaapp.R;
-import com.krirll.cinemaapp.adapters.MovieImagesAdapter;
+import com.krirll.cinemaapp.adapters.ImagesAdapter;
 import com.krirll.cinemaapp.network.models.Genres;
 import com.krirll.cinemaapp.network.models.Movie;
 import com.krirll.cinemaapp.ui.contracts.MovieInfoContract;
@@ -21,19 +21,16 @@ public class MovieInfoActivity extends AppCompatActivity implements MovieInfoCon
 
     public static final String MOVIE_INFO = "MOVIE_INFO";
 
-    private Movie movie;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_info);
         MovieInfoPresenter presenter = MovieInfoPresenter.getInstance(this);
-        movie = (Movie) getIntent().getSerializableExtra(MOVIE_INFO);
+        Movie movie = (Movie) getIntent().getSerializableExtra(MOVIE_INFO);
 
-        //todo viewPager
-        ViewPager images = findViewById(R.id.movieViewPager);
+        ViewPager images = findViewById(R.id.viewPager);
         TabLayout tab = findViewById(R.id.tab);
-        images.setAdapter(new MovieImagesAdapter(movie.listImages, this));
+        images.setAdapter(new ImagesAdapter(movie.listImages, this));
         tab.setupWithViewPager(images, true);
 
         TextView title = findViewById(R.id.title);
@@ -61,14 +58,14 @@ public class MovieInfoActivity extends AppCompatActivity implements MovieInfoCon
         director.setText(movie.director);
 
         Button button = findViewById(R.id.show);
-        button.setOnClickListener(view -> presenter.onClick());
+        button.setOnClickListener(view -> presenter.onClick(movie.id));
     }
 
     @Override
-    public void openCinemas() {
+    public void openCinemas(int id) {
         startActivity(
                 new Intent(this, CinemasActivity.class)
-                        .putExtra(CinemasActivity.CINEMAS, movie.id)
+                        .putExtra(CinemasActivity.CINEMAS, id)
         );
     }
 
