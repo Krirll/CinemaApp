@@ -24,6 +24,7 @@ public class CinemaInfoActivity extends AppCompatActivity implements CinemaInfoC
     public static final String CINEMA = "CINEMA";
 
     private Images list;
+    private TabLayout tab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class CinemaInfoActivity extends AppCompatActivity implements CinemaInfoC
         CinemaInfoPresenter.getInstance(this);
 
         ViewPager images = findViewById(R.id.viewPager);
-        TabLayout tab = findViewById(R.id.tab);
+        tab = findViewById(R.id.tab);
         images.setAdapter(
                 new ImagesAdapter(
                         cinema.place.listImages,
@@ -49,47 +50,23 @@ public class CinemaInfoActivity extends AppCompatActivity implements CinemaInfoC
         title.setText(cinema.place.title);
 
         TextView price = findViewById(R.id.price);
-        price.setText(
-                getString(
-                        R.string.price,
-                        (cinema.price == null) ? R.string.no_info : cinema.price
-                )
-        );
+        price.setText((cinema.price == null) ? getString(R.string.no_info) : cinema.price);
 
         TextView session = findViewById(R.id.session);
-        session.setText(
-                getString(
-                        R.string.session,
-                        new SimpleDateFormat(
+        session.setText(new SimpleDateFormat(
                                 "HH:mm",
                                 Locale.ROOT
                         ).format(new Date(cinema.dateTime * 1000))
-                )
         );
 
         TextView address = findViewById(R.id.address);
-        address.setText(
-                getString(
-                        R.string.address,
-                        cinema.place.address
-                )
-        );
+        address.setText(cinema.place.address);
 
         TextView subway = findViewById(R.id.subway);
-        subway.setText(
-                getString(
-                        R.string.subway,
-                        cinema.place.subway
-                )
-        );
+        subway.setText(cinema.place.subway);
 
         TextView phone = findViewById(R.id.phone);
-        phone.setText(
-                getString(
-                        R.string.phone,
-                        cinema.place.phone
-                )
-        );
+        phone.setText(cinema.place.phone);
     }
 
     @Override
@@ -99,15 +76,16 @@ public class CinemaInfoActivity extends AppCompatActivity implements CinemaInfoC
 
     @Override
     public void showPhoto() {
-        CinemaInfoPresenter.getInstance(this).show(list);
+        CinemaInfoPresenter.getInstance(this).show(list, tab.getSelectedTabPosition());
     }
 
     @Override
-    public void startActivity(Images list) {
+    public void startActivity(Images list, int id) {
         startActivity(
                 new Intent(
                         this, PhotoActivity.class
                 ).putExtra(PhotoActivity.PHOTOS, list)
+                 .putExtra(PhotoActivity.CURRENT_INDEX, id)
         );
     }
 }

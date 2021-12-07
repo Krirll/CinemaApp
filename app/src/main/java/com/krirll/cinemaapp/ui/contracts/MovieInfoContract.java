@@ -4,5 +4,5 @@ import com.krirll.cinemaapp.network.models.Images;
 
 public interface MovieInfoContract extends ViewPagerClickListener {
     void openCinemas(int id);
-    void startActivity(Images list);
+    void startActivity(Images list, int id);
 }

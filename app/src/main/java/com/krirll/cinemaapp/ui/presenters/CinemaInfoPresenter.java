@@ -18,7 +18,7 @@ public class CinemaInfoPresenter {
         return cinemaInfoPresenter;
     }
 
-    public void show(Images list) {
-        cinemaInfoContract.startActivity(list);
+    public void show(Images list, int id) {
+        cinemaInfoContract.startActivity(list, id);
     }
 }

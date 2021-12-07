@@ -22,6 +22,7 @@ public class MovieInfoActivity extends AppCompatActivity implements MovieInfoCon
 
     public static final String MOVIE_INFO = "MOVIE_INFO";
     private Images list;
+    private TabLayout tab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class MovieInfoActivity extends AppCompatActivity implements MovieInfoCon
         list = new Images(movie.listImages);
 
         ViewPager images = findViewById(R.id.viewPager);
-        TabLayout tab = findViewById(R.id.tab);
+        tab = findViewById(R.id.tab);
         images.setAdapter(
                 new ImagesAdapter(
                         movie.listImages,
@@ -81,15 +82,16 @@ public class MovieInfoActivity extends AppCompatActivity implements MovieInfoCon
 
     @Override
     public void showPhoto() {
-        MovieInfoPresenter.getInstance(this).show(list);
+        MovieInfoPresenter.getInstance(this).show(list, tab.getSelectedTabPosition());
     }
 
     @Override
-    public void startActivity(Images list) {
+    public void startActivity(Images list, int id) {
         startActivity(
                 new Intent(
                         this, PhotoActivity.class
                 ).putExtra(PhotoActivity.PHOTOS, list)
+                 .putExtra(PhotoActivity.CURRENT_INDEX, id)
         );
     }
 

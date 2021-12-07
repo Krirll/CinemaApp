@@ -72,18 +72,19 @@ public class CinemasAdapter extends RecyclerView.Adapter<CinemasAdapter.ViewHold
                 .into(holder.image);
         holder.title.setText(list.get(position).place.title);
         holder.session.setText(
-                holder.itemView.getContext().getString(
-                        R.string.session,
-                        new SimpleDateFormat("dd.MM, HH:mm", Locale.ROOT)
-                                .format(new Date(list.get(position).dateTime * 1000))
+                holder.itemView.getContext().getString(R.string.session)
+                .concat(
+                        ": ".concat(new SimpleDateFormat("dd.MM, HH:mm", Locale.ROOT)
+                                        .format(new Date(list.get(position).dateTime * 1000)))
                 )
         );
         if (holder.price != null) //если телефон расположен горизонтально, то добавляется цена
                 holder.price.setText(
-                        holder.itemView.getContext().getString(
-                                R.string.price,
-                                (list.get(position).price == null) ?
-                                        holder.itemView.getContext().getString(R.string.no_info) : list.get(position).price
+                        holder.itemView.getContext().getString(R.string.price)
+                        .concat(
+                                ": ".concat(
+                                        (list.get(position).price == null) ?
+                                        holder.itemView.getContext().getString(R.string.no_info) : list.get(position).price)
                         )
                 );
         holder.itemView.setOnClickListener(view -> listener.onClick(list.get(position)));

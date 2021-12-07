@@ -56,10 +56,8 @@ public class ImagesAdapter extends PagerAdapter {
                             public void onSuccess() {
                                 view.findViewById(R.id.progress).setVisibility(View.GONE);
                             }
-
                             @Override
-                            public void onError(Exception e) {
-                            }
+                            public void onError(Exception e) { }
                         });
                 if (listener != null)
                     imageView.setOnClickListener(view1 -> listener.showPhoto());
@@ -76,10 +74,8 @@ public class ImagesAdapter extends PagerAdapter {
                                 view.findViewById(R.id.progress).setVisibility(View.GONE);
                                 imageTouch.setMaxZoom(4f);
                             }
-
                             @Override
-                            public void onError(Exception e) {
-                            }
+                            public void onError(Exception e) { }
                         });
 
             }

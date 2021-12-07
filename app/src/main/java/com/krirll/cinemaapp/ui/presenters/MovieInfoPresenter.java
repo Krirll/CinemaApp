@@ -22,8 +22,8 @@ public class MovieInfoPresenter {
         movieInfoContract.openCinemas(id);
     }
 
-    public void show(Images list) {
-        movieInfoContract.startActivity(list);
+    public void show(Images list, int id) {
+        movieInfoContract.startActivity(list, id);
     }
 
 }

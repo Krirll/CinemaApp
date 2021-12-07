@@ -4,29 +4,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.widget.Toolbar;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.krirll.cinemaapp.R;
 import com.krirll.cinemaapp.adapters.ImagesAdapter;
-import com.krirll.cinemaapp.network.models.Image;
 import com.krirll.cinemaapp.network.models.Images;
+import com.krirll.cinemaapp.ui.contracts.PhotoContract;
+import com.krirll.cinemaapp.ui.presenters.PhotoPresenter;
 
-import java.io.Serializable;
-import java.util.List;
-
-public class PhotoActivity extends AppCompatActivity {
+public class PhotoActivity extends AppCompatActivity implements PhotoContract {
 
     public static final String PHOTOS = "PHOTOS";
+    public static final String CURRENT_INDEX = "INDEX";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
         Images listImages = (Images) getIntent().getSerializableExtra(PHOTOS);
+        int selectedIndex = getIntent().getIntExtra(CURRENT_INDEX, 0);
 
-        //todo toolbar
-        //Toolbar toolbar = findViewById(R.id.toolbar);
+        PhotoPresenter.getInstance(this);
 
         ViewPager images = findViewById(R.id.viewPager);
         TabLayout tab = findViewById(R.id.tab);
@@ -39,6 +43,23 @@ public class PhotoActivity extends AppCompatActivity {
                 )
         );
         tab.setupWithViewPager(images, true);
+        tab.selectTab(tab.getTabAt(selectedIndex));
+
+        Button back = findViewById(R.id.back);
+        back.setOnClickListener(view -> finish());
+
+        Button save = findViewById(R.id.save);
+        save.setOnClickListener(
+                view -> {
+                    ImageView currentImage = images.getChildAt(images.getCurrentItem()).findViewById(R.id.imageTouch);
+                    PhotoPresenter.getInstance(this).savePhoto(currentImage.getDrawable(), this);
+                }
+        );
+    }
+
+    @Override
+    public void showToast() {
+        Toast.makeText(this, getString(R.string.success), Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -10,10 +10,12 @@
     <string name="age_restriction">Возрастные ограничения</string>
     <string name="watch">Посмотреть сеансы</string>
     <string name="no_stars">Информация отсутствует</string>
-    <string name="price">Цена: %s</string>
-    <string name="address">Адресс: %s</string>
-    <string name="phone">Телефон: %s</string>
-    <string name="subway">Метро: %s</string>
-    <string name="session">Ближайший сеанс: %s</string>
+    <string name="price">Цена</string>
+    <string name="address">Адресс</string>
+    <string name="phone">Телефон</string>
+    <string name="subway">Метро</string>
+    <string name="session">Ближайший сеанс</string>
     <string name="no_info">нет информации</string>
+    <string name="save">Сохранить</string>
+    <string name="success">Фотография успешно сохранена</string>
 </resources>
