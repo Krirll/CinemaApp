@@ -9,6 +9,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -75,7 +76,12 @@ public class CinemasActivity extends AppCompatActivity implements CinemasContrac
     public void onSuccess(List<Cinema> listCinemas) {
         hideShimmer();
         hideSwipe();
-        adapter.setList(listCinemas);
+        if (listCinemas.size() != 0)
+            adapter.setList(listCinemas);
+        else {
+            TextView message = findViewById(R.id.message);
+            message.setText(getString(R.string.no_info_about_cinemas));
+        }
     }
 
     @Override
