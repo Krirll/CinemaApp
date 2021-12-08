@@ -5,10 +5,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
@@ -51,15 +49,20 @@ public class PhotoActivity extends AppCompatActivity implements PhotoContract {
         Button save = findViewById(R.id.save);
         save.setOnClickListener(
                 view -> {
-                    ImageView currentImage = images.getChildAt(images.getCurrentItem()).findViewById(R.id.imageTouch);
+                    ImageView currentImage = images.findViewWithTag(images.getCurrentItem())
+                                                    .findViewById(R.id.imageTouch);
                     PhotoPresenter.getInstance(this).savePhoto(currentImage.getDrawable(), this);
                 }
         );
     }
 
     @Override
-    public void showToast() {
-        Toast.makeText(this, getString(R.string.success), Toast.LENGTH_SHORT).show();
+    public void showToast(boolean result) {
+        Toast.makeText(
+                this,
+                getString((result) ? R.string.success : R.string.fail),
+                Toast.LENGTH_SHORT
+        ).show();
     }
 
     @Override

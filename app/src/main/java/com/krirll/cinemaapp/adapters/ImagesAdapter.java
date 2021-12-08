@@ -80,6 +80,7 @@ public class ImagesAdapter extends PagerAdapter {
 
             }
         }
+        view.setTag(position);
         ((ViewPager)container).addView(view, 0);
         return view;
     }

@@ -18,4 +18,7 @@
     <string name="no_info">нет информации</string>
     <string name="save">Сохранить</string>
     <string name="success">Фотография успешно сохранена</string>
+    <string name="fail">Произошла ошибка</string>
+    <string name="map">Показать на карте</string>
+    <string name="call">Позвонить</string>
 </resources>

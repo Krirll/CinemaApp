@@ -4,11 +4,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.provider.MediaStore;
 
+import com.krirll.cinemaapp.common.PhotoManager;
 import com.krirll.cinemaapp.ui.contracts.PhotoContract;
-
-import java.util.UUID;
 
 public class PhotoPresenter {
 
@@ -26,16 +24,11 @@ public class PhotoPresenter {
     }
 
     public void savePhoto(Drawable photo, Context context) {
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) photo;
-        Bitmap bitmap = bitmapDrawable.getBitmap();
-        //todo проверить что сохранилось
-        MediaStore.Images.Media.insertImage(
-                context.getContentResolver(),
-                bitmap,
-                String.valueOf(UUID.randomUUID()),
-                ""
-        );
-        photoContract.showToast();
+        Bitmap bitmap = ((BitmapDrawable) photo).getBitmap();
+        PhotoManager manager = new PhotoManager();
+        String name = manager.createName();
+        manager.save(name, bitmap, context);
+        photoContract.showToast(manager.check(name));
     }
 
 }

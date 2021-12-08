@@ -21,4 +21,12 @@ public class CinemaInfoPresenter {
     public void show(Images list, int id) {
         cinemaInfoContract.startActivity(list, id);
     }
+
+    public void makeCall() {
+        cinemaInfoContract.openCallApp();
+    }
+
+    public void openMap() {
+        cinemaInfoContract.openMap();
+    }
 }

@@ -103,8 +103,12 @@
             android:textColor="@color/black"
             android:textSize="24sp" />
 
-        <Button
-            android:text="@string/address"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mapButton"
+            android:text="@string/map"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/dark_brown"
+            app:cornerRadius="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -132,8 +136,12 @@
             android:textColor="@color/black"
             android:textSize="24sp" />
 
-        <Button
-            android:text="@string/phone"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/callButton"
+            android:text="@string/call"
+            android:textAllCaps="false"
+            app:cornerRadius="15dp"
+            android:backgroundTint="@color/dark_brown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
