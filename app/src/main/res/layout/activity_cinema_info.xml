@@ -93,12 +93,12 @@
             android:textStyle="bold"
             android:fontFamily="@font/kornilow"/>
 
-
         <TextView
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            android:textIsSelectable="true"
             android:fontFamily="@font/kornilow"
             android:textColor="@color/black"
             android:textSize="24sp" />

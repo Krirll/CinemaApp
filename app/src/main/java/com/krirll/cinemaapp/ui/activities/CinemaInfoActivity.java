@@ -105,7 +105,6 @@ public class CinemaInfoActivity extends AppCompatActivity implements CinemaInfoC
             Toast.makeText(this, getString(R.string.no_maps), Toast.LENGTH_LONG).show();
         }
     }
-
     @Override
     public void startActivity(Images list, int id) {
         startActivity(

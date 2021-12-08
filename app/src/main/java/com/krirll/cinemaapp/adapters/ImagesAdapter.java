@@ -9,7 +9,6 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.krirll.cinemaapp.R;
 import com.krirll.cinemaapp.libs.TouchImageView;
@@ -81,7 +80,7 @@ public class ImagesAdapter extends PagerAdapter {
             }
         }
         view.setTag(position);
-        ((ViewPager)container).addView(view, 0);
+        container.addView(view, 0);
         return view;
     }
 
