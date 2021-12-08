@@ -3,17 +3,18 @@ package com.krirll.cinemaapp.ui.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.krirll.cinemaapp.R;
 import com.krirll.cinemaapp.adapters.ImagesAdapter;
 import com.krirll.cinemaapp.network.models.Cinema;
-import com.krirll.cinemaapp.network.models.Coords;
 import com.krirll.cinemaapp.network.models.Images;
 import com.krirll.cinemaapp.ui.contracts.CinemaInfoContract;
 import com.krirll.cinemaapp.ui.presenters.CinemaInfoPresenter;
@@ -28,8 +29,6 @@ public class CinemaInfoActivity extends AppCompatActivity implements CinemaInfoC
 
     private Images list;
     private TabLayout tab;
-    private String phoneNumber;
-    private String address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +36,6 @@ public class CinemaInfoActivity extends AppCompatActivity implements CinemaInfoC
         setContentView(R.layout.activity_cinema_info);
         Cinema cinema = (Cinema) getIntent().getSerializableExtra(CINEMA);
         list = new Images(cinema.place.listImages);
-        address = cinema.place.address;
         CinemaInfoPresenter.getInstance(this);
 
         ViewPager images = findViewById(R.id.viewPager);
@@ -73,13 +71,12 @@ public class CinemaInfoActivity extends AppCompatActivity implements CinemaInfoC
 
         TextView phone = findViewById(R.id.phone);
         phone.setText(cinema.place.phone);
-        phoneNumber = cinema.place.phone;
 
         Button call = findViewById(R.id.callButton);
-        call.setOnClickListener(view -> CinemaInfoPresenter.getInstance(this).makeCall());
+        call.setOnClickListener(view -> CinemaInfoPresenter.getInstance(this).makeCall(cinema.place.phone));
 
         Button map = findViewById(R.id.mapButton);
-        map.setOnClickListener(view -> CinemaInfoPresenter.getInstance(this).openMap());
+        map.setOnClickListener(view -> CinemaInfoPresenter.getInstance(this).openMap(cinema.place.address));
     }
 
     @Override
@@ -93,19 +90,20 @@ public class CinemaInfoActivity extends AppCompatActivity implements CinemaInfoC
     }
 
     @Override
-    public void openCallApp() {
-        //todo телефоны не меняются
+    public void openCallApp(String phoneNumber) {
         startActivity(
-                new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:".concat(phoneNumber)))
+                new Intent(Intent.ACTION_DIAL).setData(Uri.parse(getString(R.string.tel, phoneNumber)))
         );
     }
 
     @Override
-    public void openMap() {
-        //todo адреса не меняются
-        startActivity(
-                new Intent(Intent.ACTION_VIEW).setData(Uri.parse("geo:0.0?q=" + address))
-        );
+    public void openMap(String address) {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(getString(R.string.geo, address))));
+        }
+        catch(ActivityNotFoundException ex) {
+            Toast.makeText(this, getString(R.string.no_maps), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

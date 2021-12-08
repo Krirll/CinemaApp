@@ -27,8 +27,4 @@ public class Place implements Serializable {
     @SerializedName("images")
     @Expose
     public List<Image> listImages;
-
-    @SerializedName("coords")
-    @Expose
-    public Coords coords;
 }

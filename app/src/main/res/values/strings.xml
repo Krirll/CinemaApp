@@ -21,4 +21,7 @@
     <string name="fail">Произошла ошибка</string>
     <string name="map">Показать на карте</string>
     <string name="call">Позвонить</string>
+    <string name="no_maps">К сожалению, карты на вашем устройстве отсутствуют</string>
+    <string name="geo">geo:0.0?q=%s</string>
+    <string name="tel">tel:%s</string>
 </resources>

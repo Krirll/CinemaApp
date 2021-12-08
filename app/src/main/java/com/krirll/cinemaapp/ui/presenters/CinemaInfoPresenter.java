@@ -22,11 +22,11 @@ public class CinemaInfoPresenter {
         cinemaInfoContract.startActivity(list, id);
     }
 
-    public void makeCall() {
-        cinemaInfoContract.openCallApp();
+    public void makeCall(String phoneNumber) {
+        cinemaInfoContract.openCallApp(phoneNumber);
     }
 
-    public void openMap() {
-        cinemaInfoContract.openMap();
+    public void openMap(String address) {
+        cinemaInfoContract.openMap(address);
     }
 }
