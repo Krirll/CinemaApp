@@ -16,12 +16,13 @@ Android приложение ***CinemaApp*** позволяет просматр
 ![Java](https://img.shields.io/badge/-Java-orange?style=for-the-badge&logo=Oracle)\
 ![Retrofit](https://img.shields.io/badge/-Retrofit-6F5CD6?style=for-the-badge&logo=)
 
-
 # Результат
-<img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_173935.png" alt="drawing" width="300"/>
-<img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_174049.png" alt="drawing" width="300"/>
-<img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_174132.png" alt="drawing" width="300"/>
-<img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_174245.png" alt="drawing" width="300"/>
-<img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_174621.png" alt="drawing" width="300"/>
-<img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_175014.png" alt="drawing" width="300"/>
-<img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_174709.png" alt="drawing" width="300"/>
+<p>
+  <img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_173935.png" alt="drawing" width="300"/>
+  <img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_174049.png" alt="drawing" width="300"/>
+  <img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_174132.png" alt="drawing" width="300"/>
+  <img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_174245.png" alt="drawing" width="300"/>
+  <img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_174621.png" alt="drawing" width="300"/>
+  <img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_175014.png" alt="drawing" width="300"/>
+  <img src="https://github.com/Krirll/CinemaApp/blob/master/readme-images/Screenshot_20230601_174709.png" alt="drawing" width="300"/>
+</p>
