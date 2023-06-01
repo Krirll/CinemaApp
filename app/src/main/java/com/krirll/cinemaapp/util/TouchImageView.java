@@ -1,4 +1,4 @@
-package com.krirll.cinemaapp.libs;
+package com.krirll.cinemaapp.util;
 
 import android.content.Context;
 import android.graphics.Matrix;

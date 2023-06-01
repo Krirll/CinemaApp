@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.krirll.cinemaapp.R;
-import com.krirll.cinemaapp.libs.TouchImageView;
+import com.krirll.cinemaapp.util.TouchImageView;
 import com.krirll.cinemaapp.network.models.Image;
 import com.krirll.cinemaapp.ui.contracts.ViewPagerClickListener;
 import com.squareup.picasso.Callback;

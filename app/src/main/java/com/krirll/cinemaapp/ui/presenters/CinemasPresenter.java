@@ -3,7 +3,7 @@ package com.krirll.cinemaapp.ui.presenters;
 import androidx.annotation.NonNull;
 
 import com.krirll.cinemaapp.common.Messages;
-import com.krirll.cinemaapp.common.TimeConverter;
+import com.krirll.cinemaapp.util.TimeConverter;
 import com.krirll.cinemaapp.network.models.CinemaModel;
 import com.krirll.cinemaapp.network.retrofit.RetrofitClient;
 import com.krirll.cinemaapp.network.retrofit.RetrofitService;

@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-import com.krirll.cinemaapp.common.PhotoManager;
+import com.krirll.cinemaapp.util.PhotoManager;
 import com.krirll.cinemaapp.ui.contracts.PhotoContract;
 
 public class PhotoPresenter {

@@ -1,4 +1,4 @@
-package com.krirll.cinemaapp.common;
+package com.krirll.cinemaapp.util;
 
 import java.sql.Timestamp;
 
